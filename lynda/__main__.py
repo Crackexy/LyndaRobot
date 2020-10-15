@@ -134,9 +134,8 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="👥 Add Lynda to your group", url="https://t.me/LyndaRobot?startgroup=new")]
-            update.effective_message.reply_photo(
-                LYNDA_IMG,
+                [[InlineKeyboardButton(text="Add Chiyo To Your Group", url="https://t.me/ChiyoRobot?startgroup=new")]
+            update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
                     escape_markdown(
