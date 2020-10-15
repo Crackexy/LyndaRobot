@@ -2,7 +2,7 @@
    "addons": [
       {
          "options": {
-            "version": "9.5"
+            "version": "9.6"
          },
          "plan": "heroku-postgresql"
       }
@@ -111,7 +111,7 @@
       "weeb",
       "group",
       "manager",
-      "Kigyō"
+      "Chiyo"
    ],
    "name": "Kigyō bot",
    "repository": "https://github.com/AnimeKaizoku/Kigyōbot"
