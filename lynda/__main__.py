@@ -133,18 +133,12 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-            buttons = InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Add Chiyo To Your Group", url="https://t.me/ChiyoRobot?startgroup=new")]
             update.effective_message.reply_photo(LYNDA_IMG,
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(
-                        context.bot.first_name),
-                    OWNER_ID),
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=buttons)
-    else:
-        update.effective_message.reply_text("Hola!")
+                PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
+                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Add Chiyo To Your Group",
+
+        else:
+            update.effective_message.reply_text("Hola!")
 
 
 # for test purposes
