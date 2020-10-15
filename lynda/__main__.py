@@ -130,12 +130,18 @@ def start(update: Update, context: CallbackContext):
 
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
+else:
+            first_name = update.effective_user.first_name
+            update.effective_message.reply_photo(SOPHIA_IMG,
+                PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
+                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Add Sophia To Your Group",
 
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Add Chiyo To Your Group",
+                                                                       url="t.me/{}?startgroup=true".format(bot.username))]]))
 
      else:
          update.effective_message.reply_text("Hola!")
