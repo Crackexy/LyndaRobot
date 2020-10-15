@@ -17,41 +17,29 @@ from lynda.modules.helper_funcs.chat_status import is_user_admin
 from lynda.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-Hi {}, my name is {}!
-// I am an Anime themed group management bot with a lot of Special Features.
-You can find the list of available commands with /help.
-==========================
--> [Lynda's Repo](https://waa.ai/Lynda)
--> Report [Lynda Support](https://t.me/LyndaEagleSupport) if I go offline
-==========================
-`Maintained by` @YorktownEagleUnion
-
+Hi {}, my name is Sophia!
+I am a Powerful Telegram Group Management bot with Some Anime Fun.
+Add me to your group for spam free running.
+================================
+>> To see list of available commands hit /help.
+>> For Updates Go [Here](t.me/ChiyoUpdates).
+================================\n
 """
 
 HELP_STRINGS = """
-Hey there! My name is *{}*.
-I'm a part of Eagle Union.
-Have a look at the following for an idea of some of \
-the things I can help you with.
-I'm managed by [Poki](https://t.me/pokurt)
-Chatbot module from [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot.git)
-Disaster module from [SaitamaRobot](https://github.com/AnimeKaizoku/SaitamaRobot)
+Hey there! My name is *Chiyo*.
+Have a look at the following for an idea of some of the things I can help you with.\n
 *Main* commands available:
--> `/start`
-start the bot
--> `/help`
-PM's you this message.
--> `/help` <module name>
-PM's you info about that module.
--> `/donate`
-information about how to donate!
--> `/settings`
-will redirect you to pm, with all that chat's settings.
+◉ /start : start the bot
+◉ /help : PM's you this message.
+◉ /help <module name> : PM's you info about that module.
+◉ /donate : information about how to donate!
+◉ /settings : will redirect you to pm, with all that chat's settings.
 
 {}
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with `/` or `!`.\n")
 
-LYNDA_IMG = "https://telegra.ph/file/aa808a7a26a011cdf613e.jpg"
+LYNDA_IMG = "https://telegra.ph/file/8af3961975d1cafd53839.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 Lynda is hosted on one of Digital Ocean Servers. \
@@ -146,11 +134,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="👥 Add Lynda to your group", url="https://t.me/LyndaRobot?startgroup=new")],
-                [InlineKeyboardButton(text="🙋 Support Group", url="https://t.me/LyndaEagleSupport"),
-                InlineKeyboardButton(text="🚫 Global Logs", url="https://t.me/LyndaGLogs")],
-                [InlineKeyboardButton(text="❔ Help", url="https://t.me/LyndaRobot?start=help"),
-                InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/LyndaUpdateLogs")]])
+                [[InlineKeyboardButton(text="👥 Add Lynda to your group", url="https://t.me/LyndaRobot?startgroup=new")]
             update.effective_message.reply_photo(
                 LYNDA_IMG,
                 PM_START_TEXT.format(
