@@ -3,7 +3,6 @@ import os
 import sys
 import time
 import telegram.ext as tg
-import spamwatch
 
 from telethon import TelegramClient
 
@@ -83,7 +82,6 @@ if ENV:
     LASTFM_API_KEY = os.environ.get('LASTFM_API_KEY', None)
     DEEPFRY_TOKEN = os.environ.get('DEEPFRY_TOKEN', None)
     API_WEATHER = os.environ.get('API_WEATHER', None)
-    SW_API = os.environ.get('SW_API', None)
 
 else:
     from lynda.config import Development as Config
@@ -147,7 +145,6 @@ else:
     LASTFM_API_KEY = Config.LASTFM_API_KEY
     DEEPFRY_TOKEN = Config.DEEPFRY_TOKEN
     API_WEATHER = Config.API_WEATHER
-    SW_API = Config.SW_API
 SUDO_USERS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
 
@@ -161,29 +158,3 @@ WHITELIST_USERS = list(WHITELIST_USERS)
 SUPPORT_USERS = list(SUPPORT_USERS)
 SARDEGNA_USERS = list(SARDEGNA_USERS)
 SPAMMERS = list(SPAMMERS)
-
-# SpamWatch
-if SW_API == "None":
-    spam_watch = None
-    LOGGER.warning("SpamWatch API key is missing! Check your config var")
-else:
-    try:
-        spam_watch = spamwatch.Client(SW_API)
-    except Exception:
-        spam_watch = None
-
-# Load at end to ensure all prev variables have been set
-from lynda.modules.helper_funcs.handlers import CustomCommandHandler, CustomRegexHandler, CustomMessageHandler
-
-# make sure the regex handler can take extra kwargs
-tg.RegexHandler = CustomRegexHandler
-tg.CommandHandler = CustomCommandHandler
-tg.MessageHandler = CustomMessageHandler
-
-
-def spamfilters(_text, user_id, _chat_id):
-    if int(user_id) in SPAMMERS:
-        print("This user is a spammer!")
-        return True
-    else:
-        return False
